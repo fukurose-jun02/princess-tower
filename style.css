@@ -1,0 +1,116 @@
+/* ========================================
+   おひめさまの とうのぼり - スタイルシート
+   ======================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: #2d1b4e;
+  font-family: 'Hiragino Maru Gothic Pro', 'Rounded Mplus 1c', sans-serif;
+  overflow: hidden;
+  touch-action: none;
+}
+
+#gameCanvas {
+  display: block;
+  margin: 0 auto;
+}
+
+/* ===== UI（スコア・階数・ライフ） ===== */
+#ui {
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 12px; pointer-events: none; z-index: 10;
+}
+
+.ui-box {
+  background: rgba(255,255,255,.92);
+  border-radius: 999px; padding: 6px 14px;
+  font-size: 16px; font-weight: 900;
+  border: 3px solid #9b59b6;
+  box-shadow: 0 3px 0 #9b59b644;
+  color: #9b59b6;
+}
+
+.ui-floor { border-color: #e67e22; color: #e67e22; box-shadow: 0 3px 0 #e67e2244; }
+.ui-life  { border-color: #e74c3c; color: #e74c3c; box-shadow: 0 3px 0 #e74c3c44; }
+
+/* ===== オーバーレイ（スタート・クリア・ゲームオーバー） ===== */
+#overlay {
+  position: fixed; inset: 0;
+  background: rgba(80,20,100,.45);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  z-index: 100; backdrop-filter: blur(6px);
+}
+
+.panel {
+  background: #fff; border-radius: 32px;
+  padding: 30px 34px; text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  border: 5px solid #FFD700;
+  animation: popIn .4s cubic-bezier(.34,1.56,.64,1);
+  max-width: 310px; width: 90%;
+}
+
+@keyframes popIn {
+  from { transform: scale(.5); opacity: 0; }
+  to   { transform: scale(1);  opacity: 1; }
+}
+
+.panel h1         { font-size: 22px; color: #9b59b6; margin-bottom: 8px; line-height: 1.4; }
+.panel .sub       { font-size: 13px; color: #999; margin-bottom: 18px; line-height: 1.7; }
+.panel .big-emoji  { font-size: 50px; margin-bottom: 10px; }
+.panel .result-msg { font-size: 26px; font-weight: 900; margin-bottom: 6px; }
+.panel .result-info{ font-size: 14px; color: #666; margin-bottom: 16px; }
+
+.char-preview {
+  width: 60px; height: auto;
+  margin: 0 auto 10px;
+  animation: bounce .8s infinite alternate;
+  display: block;
+}
+
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-12px); }
+}
+
+/* ===== ボタン ===== */
+.btn {
+  background: linear-gradient(135deg, #9b59b6, #e91e8c);
+  color: #fff; border: none; border-radius: 999px;
+  padding: 13px 40px; font-size: 19px; font-weight: 900;
+  cursor: pointer; box-shadow: 0 5px 0 #6c2a8a;
+  transition: transform .1s, box-shadow .1s;
+  font-family: inherit;
+}
+.btn:active { transform: translateY(4px); box-shadow: 0 1px 0 #6c2a8a; }
+
+/* ===== タップヒント ===== */
+.tap-hint {
+  position: fixed; bottom: 28px; left: 0; right: 0;
+  text-align: center; color: rgba(255,255,255,.65);
+  font-size: 15px; font-weight: bold;
+  z-index: 5; pointer-events: none;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
+
+/* ===== エフェクト ===== */
+.float-text {
+  position: fixed; pointer-events: none; font-size: 24px;
+  animation: floatUp .8s ease-out forwards; z-index: 50;
+}
+@keyframes floatUp {
+  from { transform: translateY(0) scale(1); opacity: 1; }
+  to   { transform: translateY(-60px) scale(.4); opacity: 0; }
+}
+
+.dmg-flash {
+  position: fixed; inset: 0;
+  background: rgba(255,0,0,.25);
+  pointer-events: none; z-index: 20;
+  animation: flashOut .4s ease-out forwards;
+}
+@keyframes flashOut { from { opacity: 1; } to { opacity: 0; } }

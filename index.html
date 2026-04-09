@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>おひめさまの とうのぼり</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="ui">
+  <div class="ui-box">&#11088;<span id="scoreDisplay">0</span></div>
+  <div class="ui-box ui-floor"><span id="floorDisplay">0</span>/<span id="totalFloors">20</span></div>
+  <div class="ui-box ui-life"><span id="lifeDisplay"></span></div>
+</div>
+<canvas id="gameCanvas"></canvas>
+<div class="tap-hint">&#128070; タップで ジャンプ！</div>
+<div id="overlay">
+  <div class="panel" id="startPanel">
+    <img class="char-preview" src="images/player.png" alt="princess">
+    <h1>おひめさまの<br>とうのぼり</h1>
+    <div class="sub">&#128070; タップで ジャンプ！<br>&#11088;&#10084;&#65039; を あつめよう<br>&#128122; てきが いたら まって！<br>いなくなったら タップ！<br>てっぺんを めざそう！</div>
+    <button class="btn" id="startBtn">&#9654; はじめる</button>
+  </div>
+  <div class="panel" id="clearPanel" style="display:none">
+    <div class="big-emoji">&#127775;&#127775;&#127775;</div>
+    <div class="result-msg" style="color:#e91e8c">クリア！！</div>
+    <h1>てっぺんに<br>ついたよ！</h1>
+    <div class="result-info">&#11088; <span id="clearScore">0</span>こ あつめた！</div>
+    <button class="btn" id="retryBtn">&#128260; もういちど</button>
+  </div>
+  <div class="panel" id="gameoverPanel" style="display:none">
+    <div class="big-emoji">&#128557;</div>
+    <div class="result-msg" style="color:#e74c3c">ゲームオーバー</div>
+    <h1>つかまっちゃった！</h1>
+    <div class="result-info"><span id="goFloor">0</span>かいまで のぼれたよ！<br>&#11088; <span id="goScore">0</span>こ あつめた！</div>
+    <button class="btn" id="retryBtn2">&#128260; もういちど</button>
+  </div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
