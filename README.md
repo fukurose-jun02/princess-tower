@@ -1,3 +1,6 @@
+> **このゲームはお引越ししました。** 今後は [まとめサイト my-games](https://github.com/fukurose-jun02/my-games) の `princess-tower/` フォルダで管理しています。
+> 遊ぶ：https://fukurose-jun02.github.io/my-games/princess-tower/
+
 # 👸 おひめさまの とうのぼり
 
 4〜6歳のお子さま向けブラウザゲームです。
